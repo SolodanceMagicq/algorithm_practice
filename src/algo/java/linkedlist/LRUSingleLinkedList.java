@@ -1,4 +1,4 @@
-package java.linkedlist;
+package algo.java.linkedlist;
 
 /**
  * 基于单链表实现LRU缓存淘汰算法

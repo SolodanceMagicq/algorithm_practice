@@ -1,4 +1,4 @@
-package java.linkedlist;
+package algo.java.linkedlist;
 
 import java.util.HashMap;
 
@@ -8,14 +8,13 @@ import java.util.HashMap;
  * 3）有序链表合并
  * 4）删除链表中倒数第n个结点
  *
- *
  * @author MagicQ
  * @version 1.0
  * @date 2019/1/11
  */
 public class LinkedListAlgo {
     /**
-     * 单链表反转
+     * 迭代法：迭代每个结点，与前一结点位置反转
      *
      * @param list
      * @return
@@ -56,10 +55,10 @@ public class LinkedListAlgo {
     }
 
     /**
-     * 头节点插入法实现链表反转
+     * 头节点插入法基于原链表产生一个新的反转链表
      *
      * @param current 当前节点
-     * @return
+     * @return 反转后的链表第一个节点
      */
     public static Node reverseByHeadInsert(Node current) {
         Node dummy = new Node(-1);
@@ -203,9 +202,9 @@ public class LinkedListAlgo {
         Node node2 = new Node(2, node1);
         Node node3 = new Node(3, node2);
         // printAll(node3);
-        // Node reversed = reverse(node3);
+        Node reversed = reverse(node3);
         // Node reversed = reverseList(node3);
-        Node reversed = reverseListByRecursion(node3);
+        // Node reversed = reverseListByRecursion(node3);
         // Node reversed = reverseByHeadInsert(node3);
         printAll(reversed);
         Node node4 = new Node(4);
