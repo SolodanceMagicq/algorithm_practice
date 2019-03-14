@@ -55,10 +55,10 @@ public class LinkedListAlgo {
     }
 
     /**
-     * 头节点插入法基于原链表产生一个新的反转链表
+     * 头结点插入法基于原链表产生一个新的反转链表
      *
-     * @param current 当前节点
-     * @return 反转后的链表第一个节点
+     * @param current 当前结点
+     * @return 反转后的链表第一个结点
      */
     public static Node reverseByHeadInsert(Node current) {
         Node dummy = new Node(-1);
