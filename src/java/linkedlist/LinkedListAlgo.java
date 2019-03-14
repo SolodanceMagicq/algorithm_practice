@@ -7,7 +7,7 @@ import java.util.HashMap;
  * 2）链表中环检测
  * 3）有序链表合并
  * 4）删除链表中倒数第n个结点
- * 5）求链表的中间结点
+ *
  *
  * @author MagicQ
  * @version 1.0
