@@ -3,45 +3,28 @@ package algo.java.linkedlist;
 import java.util.HashMap;
 
 /**
+ * 单链表常见操作
+ * <p>
  * 1）单链表反转
  * 2）链表中环检测
  * 3）有序链表合并
  * 4）删除链表中倒数第n个结点
+ * 5）链表中间结点
  *
  * @author MagicQ
  * @version 1.0
  * @date 2019/1/11
  */
 public class LinkedListAlgo {
-    /**
-     * 迭代法：迭代每个结点，与前一结点位置反转
-     *
-     * @param list
-     * @return
-     */
-    public static Node reverse(Node list) {
-        Node headNode = null;
-
-        Node previousNode = null;
-        Node currentNode = list;
-        while (currentNode != null) {
-            Node nextNode = currentNode.next;
-            if (nextNode == null) {
-                headNode = currentNode;
-            }
-            currentNode.next = previousNode;
-            previousNode = currentNode;
-            currentNode = nextNode;
-        }
-
-        return headNode;
-    }
 
     /**
-     * 单链表反转
+     * 单链表反转，双指针迭代法：
+     * <p>
+     * head 指针用于结点遍历，设置每个结点；
+     * prev指针的移动，为head指针遍历结点后设置next提供支持，使其指向之前的结点，实现反转。
      *
-     * @param head
-     * @return
+     * @param head 当前结点
+     * @return 目标结点（第一个结点）
      */
     public static Node reverseList(Node head) {
         Node prev = null;
@@ -55,10 +38,13 @@ public class LinkedListAlgo {
     }
 
     /**
-     * 头结点插入法基于原链表产生一个新的反转链表
+     * 单链表反转，头结点插入法：
+     * <p>
+     * 遍历链表结点，将其设置为头结点的下一个结点，
+     * 设置它的下一个结点为头结点原来指向的结点，实现反转。
      *
      * @param current 当前结点
-     * @return 反转后的链表第一个结点
+     * @return 反转后的链表第一个结点（即头结点的下一个结点）
      */
     public static Node reverseByHeadInsert(Node current) {
         Node dummy = new Node(-1);
@@ -73,14 +59,13 @@ public class LinkedListAlgo {
     }
 
     /**
-     * 1->2->3->NULL
-     * 3->2->1->NULL
-     * 递归实现单链表反转
+     * 单链表反转，递归法
      *
      * @param head
      * @return
      */
     public static Node reverseListByRecursion(Node head) {
+        //哨兵
         if (head == null || head.next == null) {
             return head;
         }
@@ -91,7 +76,10 @@ public class LinkedListAlgo {
     }
 
     /**
-     * 判断链表中存在环：快慢指针法
+     * 链表中环检测，快慢指针法：
+     * <p>
+     * 当快指针遍历到链表结尾时，说明不存在环；
+     * 如果在遍历过程中快慢指针相遇，则表中存在环。
      *
      * @param headNode
      * @return
@@ -106,7 +94,7 @@ public class LinkedListAlgo {
 
         while (q != null && q.next != null) {
             p = p.next; // 遍历一个节点
-            q = q.next.next; // 遍历两个个节点
+            q = q.next.next; // 遍历两个节点
 
             // 已到链表末尾
             if (q == null) {
@@ -121,7 +109,9 @@ public class LinkedListAlgo {
     }
 
     /**
-     * 判断链表中存在环:足迹法
+     * 链表中环检测，足迹法：
+     * <p>
+     * 使用Map存储遍历过的结点，如果Map中再次出现该结点，则说明链表中存在环。
      *
      * @param list
      * @return
@@ -139,7 +129,9 @@ public class LinkedListAlgo {
     }
 
     /**
-     * 删除倒数第n个元素：将链表反转，删除正数第n个元素后再次反转
+     * 删除倒数第n个元素：
+     * <p>
+     * 将链表反转，删除正数第n个元素后再次反转。
      *
      * @param list 当前结点
      * @return
@@ -168,6 +160,31 @@ public class LinkedListAlgo {
         return reversNode;
     }
 
+    /**
+     * 链表中间结点,快慢指针法：
+     * <p>
+     * 快指针遍历到链表结尾处时，
+     * 慢指针所指的位置即为链表中间位置。
+     *
+     * @param curNode
+     * @return
+     */
+    public static Node findMidlleNode(Node curNode) {
+        if (curNode == null) {
+            return null;
+        }
+        Node slow = curNode;
+        Node fast = curNode;
+        while (fast.next != null && fast.next.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        return slow;
+    }
+
+    /**
+     * 结点
+     */
     public static class Node {
         int data;
         Node next;
@@ -188,6 +205,12 @@ public class LinkedListAlgo {
 
     }
 
+    /**
+     * 打印结点
+     *
+     * @param list
+     */
+
     public static void printAll(Node list) {
         Node p = list;
         while (p != null) {
@@ -201,23 +224,26 @@ public class LinkedListAlgo {
         Node node1 = new Node(1, null);
         Node node2 = new Node(2, node1);
         Node node3 = new Node(3, node2);
-        // printAll(node3);
-        Node reversed = reverse(node3);
+        Node node4 = new Node(4, node3);
+        Node node5 = new Node(5, node4);
+        Node node6 = new Node(6, node5);
+        Node node7 = new Node(7, node6);
+        Node node8 = new Node(8, node7);
+        Node node9 = new Node(9, node8);
         // Node reversed = reverseList(node3);
         // Node reversed = reverseListByRecursion(node3);
         // Node reversed = reverseByHeadInsert(node3);
-        printAll(reversed);
-        Node node4 = new Node(4);
-        Node node5 = new Node(5);
-        Node node6 = new Node(6);
-        Node node7 = new Node(7);
-        node4.next = node5;
-        node5.next = node6;
-        node6.next = node7;
-        node7.next = node4;
-        // System.out.printf("has cirecle : %s\n", hasCircle(node7));
-        Node node = delIndexNode(node3, 2);
-        // printAll(node);
-
+        // printAll(reversed);
+        // Node node4 = new Node(4);
+        // Node node5 = new Node(5);
+        // Node node6 = new Node(6);
+        // Node node7 = new Node(7);
+        // node4.next = node5;
+        // node5.next = node6;
+        // node6.next = node7;
+        // node7.next = node4;
+        // Node node = delIndexNode(node3, 2);
+        Node node = findMidlleNode(node9);
+        printAll(node);
     }
 }
