@@ -231,7 +231,7 @@ public class LinkedListAlgo {
         Node node8 = new Node(8, node7);
         Node node9 = new Node(9, node8);
         // Node reversed = reverseList(node3);
-        // Node reversed = reverseListByRecursion(node3);
+        Node reversed = reverseListByRecursion(node9);
         // Node reversed = reverseByHeadInsert(node3);
         // printAll(reversed);
         // Node node4 = new Node(4);
@@ -243,7 +243,7 @@ public class LinkedListAlgo {
         // node6.next = node7;
         // node7.next = node4;
         // Node node = delIndexNode(node3, 2);
-        Node node = findMidlleNode(node9);
-        printAll(node);
+        // Node node = findMidlleNode(node9);
+        printAll(reversed);
     }
 }
