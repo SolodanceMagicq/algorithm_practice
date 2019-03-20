@@ -29,7 +29,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package algo.java.jmh;
+package com.jmh;
 
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.runner.Runner;
@@ -38,9 +38,15 @@ import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 import org.openjdk.jmh.runner.options.TimeValue;
 
-//@Fork(1)
-//@Warmup(iterations = 3, time = 1, timeUnit = TimeUnit.SECONDS)
-//@Measurement(iterations = 3, time = 1, timeUnit = TimeUnit.SECONDS)
+
+/**
+ * 字符串多种追加方式吞吐量基准测试
+ *
+ * @author MagicQ
+ * @version 1.0
+ * @date  10:54 2019/3/20
+ *
+ */
 public class StringOpt {
 	@Benchmark
 	public void measureStringBufferApend() {

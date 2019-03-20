@@ -29,7 +29,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package algo.java.jmh;
+package com.jmh;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -50,23 +50,24 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 import org.openjdk.jmh.runner.options.TimeValue;
 
 /**
- * 数组各种迭代方式吞吐量基准测试
- * 
- * @author MagicQ
+ * 数组多种迭代方式吞吐量基准测试
  *
+ * @author MagicQ
+ * @version 1.0
+ * @date 10:54 2019/3/20
  */
 public class CollectorOpt {
 	@State(Scope.Thread)
 	public static class ArrayState {
-		public String[] arr = new String[100];
-		public ArrayList<String> arrayList = new ArrayList<String>(100);
+		public String[] arr = new String[10000];
+		public ArrayList<String> arrayList = new ArrayList<String>(10000);
 		public LinkedList<String> linkedList = new LinkedList<String>();
 
 		@Setup(Level.Trial)
 		public void doSetup() {
 			System.out.println("Do Setup");
 
-			for (int i = 0; i < 100; i++) {
+			for (int i = 0; i < 10000; i++) {
 				arr[i] = i + "";
 				arrayList.add(i + "");
 				linkedList.add(i + "");
